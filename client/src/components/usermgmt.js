@@ -17,9 +17,11 @@ const UserManagement = () => {
   const [searchEmail, setSearchEmail] = useState([]);
   const [showEmail, setShowEmail] = useState(false);
 
+  // when the user button is clicked in the browser, THIS (an asynchronous function) is called!!!
+  // aysnc because HTTP requests are long running so we want to do this asynchronously!!!
   const getAllUsernames = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/read/usernames');
+      const response = await axios.get('http://localhost:8000/read/usernames'); // axios allows us to send get/post requests to the server
       const data = response.data;
       if(data.error) {
         setUsernames(
@@ -85,7 +87,7 @@ const UserManagement = () => {
 
   const addUser = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/write/adduser', formData);
+      const response = await axios.post('http://localhost:8000/write/adduser', formData); // here we use axios again, use a post. formData is an object
       const data  =response.data;
       if(data.error) {
         alert(data.error.message);

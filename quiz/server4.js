@@ -8,6 +8,10 @@ const port = 8000;
 const readUsers = require('./readUsers');
 const writeUsers = require('./writeUsers');
 
+// CHANGE THIS ONE! break into readUsers and writeUsers!
+// we dont have any app.get or app.post, everything is in app.use
+// everything that has to do with reading needs to be in readUsers.js!
+
 let users;
 fs.readFile(path.resolve(__dirname, '../data/users.json'), function(err, data) {
   console.log('reading file ... ');

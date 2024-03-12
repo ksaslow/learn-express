@@ -64,10 +64,11 @@ app.use(express.json()); // this middleware is crucial to get req.body BELOW!!!
 app.use(express.urlencoded({ extended: true }));
 app.use('/write/adduser', addMsgToRequest);
 
+// service to create new user
 app.post('/write/adduser', (req, res) => { // define URI along with the handler, 
   let newuser = req.body;
   req.users.push(newuser);
-  fs.writeFile(path.resolve(__dirname, './data/users.json'), JSON.stringify(req.users), (err) => {
+  fs.writeFile(path.resolve(__dirname, './data/users.json'), JSON.stringify(req.users), (err) => { // note: we dont have a DB yes, so we are writing it to a FILE!
     if (err) console.log('Failed to write');
     else console.log('User Saved');
   });

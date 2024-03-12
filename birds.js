@@ -1,7 +1,10 @@
+// define all code that belongs to the '/birds' route in a separate file!!!
+
 const express = require('express')
 const router = express.Router()
 
 // middleware that is specific to this router
+// add all our routes to router object, not the app object in router-ex-server
 router.use((req, res, next) => {
   console.log('Time: ', Date.now())
   next()
